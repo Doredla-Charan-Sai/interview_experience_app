@@ -1,0 +1,26 @@
+.wrong-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    padding: 30px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: rgb(99, 99, 99);
+    background-color: white;
+}
+.cross-btn-cont{
+    display: flex;
+    justify-content: flex-end;
+}
+.cross-btn{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    background-color: transparent;
+}
+.wrong-img{
+    width: 100%;
+}

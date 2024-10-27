@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    background-color: #0066cc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.header-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.header-link:hover {
+    color: #ffd700;
+}
+
+.header-link p {
+    margin: 0; /* Removes default margin from <p> */
+}
