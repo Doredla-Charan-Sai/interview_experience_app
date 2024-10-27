@@ -65,6 +65,16 @@ body {
     margin-bottom: 20px;
 }
 
+.item:hover {
+    transform: translateY(15px); 
+    background-color: #007bff;
+    font-weight: 600;
+}
+
+.item-btn:hover{
+    color: white;
+}
+
 .item-btn{
     background-color: transparent;
     outline: none;

@@ -54,7 +54,8 @@ class CompaniesList extends Component{
 
     render(){
         const {searchInput,itemsData,showModal} = this.state;
-        const filteredData = itemsData.filter(eachItem=>
+        let filteredData = itemsData;
+        filteredData = itemsData.filter(eachItem=>
             eachItem.companyName.toLowerCase().includes(searchInput.toLowerCase())
         );
         return(
@@ -132,7 +133,7 @@ class CompaniesList extends Component{
                         ))
                     }
                 </ul>}
-                {(filteredData.length===0) && <NotFound />}
+                {(filteredData.length===0 && searchInput.length>0) && <NotFound />}
             </div>
         )
     }

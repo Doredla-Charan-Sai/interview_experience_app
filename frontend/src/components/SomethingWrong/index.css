@@ -1,8 +1,6 @@
 .wrong-cont{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 40%;
     padding: 30px;
     border: none;
