@@ -58,6 +58,9 @@ class CompaniesList extends Component{
         filteredData = itemsData.filter(eachItem=>
             eachItem.companyName.toLowerCase().includes(searchInput.toLowerCase())
         );
+        if(filteredData.length===0 && searchInput.length===0){
+            filteredData = itemsData;
+        }
         return(
             <div className='companies-main-cont'>
                 <Header/>
