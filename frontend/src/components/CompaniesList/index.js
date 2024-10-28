@@ -16,7 +16,7 @@ class CompaniesList extends Component{
     }
 
     getAPICall = async ()=>{
-        const url = 'http://localhost:3000/items';
+        const url = 'https://interview-experience-app-3.onrender.com/items';
         const response = await fetch(url);
         if(response.ok){
             const data = await response.json();

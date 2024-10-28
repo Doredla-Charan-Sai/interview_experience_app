@@ -131,7 +131,7 @@ class Home extends Component {
             hr,
         };
 
-        const apiUrl = 'http://localhost:3000/company';
+        const apiUrl = 'https://interview-experience-app-3.onrender.com/company';
         const options = {
             method: 'POST',
             headers: {
