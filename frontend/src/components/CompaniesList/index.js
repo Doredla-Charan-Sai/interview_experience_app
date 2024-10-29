@@ -4,11 +4,12 @@ import Header from '../Header';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, Button } from 'react-bootstrap';
+import { InfinitySpin } from 'react-loader-spinner';
 import NotFound from '../NotFound';
 
 class CompaniesList extends Component{
     state = {
-        searchInput: "", itemsData: [], modalOpen: false
+        searchInput: "", itemsData: [], modalOpen: false, isLoading: false
     }
 
     componentDidMount = () =>{
@@ -16,6 +17,7 @@ class CompaniesList extends Component{
     }
 
     getAPICall = async ()=>{
+        this.setState({isLoading: true});
         const url = 'https://interview-experience-app-3.onrender.com/items';
         const response = await fetch(url);
         if(response.ok){
@@ -36,7 +38,7 @@ class CompaniesList extends Component{
                 codingTopics: eachItem.codingTopics,
                 hr: eachItem.hr,
             }));
-            this.setState({itemsData: parsedData});
+            this.setState({itemsData: parsedData, isLoading: false});
         }
     }
 
@@ -53,7 +55,7 @@ class CompaniesList extends Component{
     };
 
     render(){
-        const {searchInput,itemsData,showModal} = this.state;
+        const {searchInput,itemsData,showModal, isLoading} = this.state;
         let filteredData = itemsData;
         filteredData = itemsData.filter(eachItem=>
             eachItem.companyName.toLowerCase().includes(searchInput.toLowerCase())
@@ -68,7 +70,7 @@ class CompaniesList extends Component{
                     <MagnifyingGlassIcon style={{ width: 24, height: 24 }} />
                     <input type='search' className='search-input' onChange={this.handleSearch} placeholder='Enter company name'/>
                 </div>
-                {filteredData.length!==0 && <ul className='items-cont'>
+                {isLoading ? <InfinitySpin width="200" color="#0066cc" /> : <>{filteredData.length!==0 && <ul className='items-cont'>
                     {
                         filteredData.map(eachItem=>(
                             <li className='item' key={eachItem.id}>
@@ -136,7 +138,7 @@ class CompaniesList extends Component{
                         ))
                     }
                 </ul>}
-                {(filteredData.length===0 && searchInput.length>0) && <NotFound />}
+                {(filteredData.length===0 && searchInput.length>0) && <NotFound />}</>}
             </div>
         )
     }
