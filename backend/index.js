@@ -7,7 +7,20 @@ let db = null;
 const path = require('path');
 const dbpath = path.join(__dirname, 'day3.db');
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            'https://interview-experience-app.vercel.app',
+            'http://localhost:3001'
+        ];
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+}));
 
 const initializeBDandServer = async ()=>{
     try{
